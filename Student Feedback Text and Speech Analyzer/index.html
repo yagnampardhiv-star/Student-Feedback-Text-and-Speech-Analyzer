@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Feedback Text & Speech Analyzer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <div class="logo-icon">SF</div>
+            <div>
+                <h2>Feedback<span>AI</span></h2>
+                <p>Student Feedback Analyzer</p>
+            </div>
+        </div>
+
+        <div class="nav-links">
+            <a href="#analyzer">Analyzer</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ AI-Powered Feedback Analysis
+            </div>
+
+            <h1>
+                Understand Student
+                <span>Feedback Smarter.</span>
+            </h1>
+
+            <p>
+                Analyze written and spoken student feedback to understand
+                sentiment, identify important keywords, and discover
+                meaningful insights.
+            </p>
+
+            <a href="#analyzer" class="hero-button">
+                Start Analyzing →
+            </a>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="mini-card">
+                <div class="mini-icon positive">😊</div>
+                <div>
+                    <strong>Positive Feedback</strong>
+                    <span>Great teaching experience</span>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <div class="mini-icon neutral">😐</div>
+                <div>
+                    <strong>Neutral Feedback</strong>
+                    <span>Course needs some improvements</span>
+                </div>
+            </div>
+
+            <div class="mini-card">
+                <div class="mini-icon negative">☹️</div>
+                <div>
+                    <strong>Negative Feedback</strong>
+                    <span>More practical sessions needed</span>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Analyzer -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+            <span>ANALYSIS TOOL</span>
+            <h2>Analyze Student Feedback</h2>
+            <p>
+                Enter feedback manually or use your microphone to convert
+                speech into text.
+            </p>
+        </div>
+
+        <div class="analyzer-container">
+
+            <!-- Input -->
+            <div class="input-card">
+
+                <div class="card-header">
+                    <div>
+                        <h3>Student Feedback</h3>
+                        <p>Write or speak your feedback</p>
+                    </div>
+
+                    <div class="status">
+                        <span></span> Ready
+                    </div>
+                </div>
+
+                <textarea
+                    id="feedbackText"
+                    placeholder="Example: The faculty explained the concepts very clearly. I enjoyed the practical sessions, but I would like more real-world examples..."
+                ></textarea>
+
+                <div class="input-footer">
+
+                    <div class="word-count">
+                        <span id="characterCount">0</span> characters
+                    </div>
+
+                    <div class="buttons">
+
+                        <button class="clear-btn" id="clearBtn">
+                            Clear
+                        </button>
+
+                        <button class="mic-btn" id="micBtn">
+                            🎤 Speak
+                        </button>
+
+                        <button class="analyze-btn" id="analyzeBtn">
+                            Analyze Feedback
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <p id="speechStatus" class="speech-status"></p>
+
+            </div>
+
+
+            <!-- Results -->
+            <div class="results-card">
+
+                <div class="result-header">
+                    <div>
+                        <h3>Analysis Results</h3>
+                        <p>Insights from your feedback</p>
+                    </div>
+
+                    <div class="ai-badge">
+                        ✨ AI Analysis
+                    </div>
+                </div>
+
+                <!-- Sentiment -->
+                <div class="sentiment-box">
+
+                    <div class="sentiment-icon" id="sentimentIcon">
+                        😊
+                    </div>
+
+                    <div class="sentiment-content">
+                        <span>Overall Sentiment</span>
+                        <h2 id="sentimentResult">Waiting for analysis</h2>
+                    </div>
+
+                    <div class="confidence">
+                        <span>Confidence</span>
+                        <strong id="confidenceResult">--%</strong>
+                    </div>
+
+                </div>
+
+
+                <!-- Statistics -->
+                <div class="statistics">
+
+                    <div class="stat">
+                        <span class="stat-icon">📝</span>
+                        <div>
+                            <strong id="wordResult">0</strong>
+                            <span>Words</span>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-icon">🔤</span>
+                        <div>
+                            <strong id="charResult">0</strong>
+                            <span>Characters</span>
+                        </div>
+                    </div>
+
+                    <div class="stat">
+                        <span class="stat-icon">🔑</span>
+                        <div>
+                            <strong id="keywordResult">0</strong>
+                            <span>Keywords</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Keywords -->
+                <div class="keywords-section">
+
+                    <div class="result-title">
+                        <h3>Important Keywords</h3>
+                    </div>
+
+                    <div id="keywords" class="keywords">
+                        <span class="empty-keyword">
+                            Analyze feedback to see keywords
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+            <span>POWERFUL FEATURES</span>
+            <h2>Everything You Need</h2>
+            <p>
+                A simple and professional tool for understanding student opinions.
+            </p>
+        </div>
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon blue">📝</div>
+                <h3>Text Analysis</h3>
+                <p>
+                    Analyze written student feedback and identify its
+                    overall sentiment.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon purple">🎤</div>
+                <h3>Speech Analysis</h3>
+                <p>
+                    Convert spoken feedback into text using your device microphone.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon green">😊</div>
+                <h3>Sentiment Detection</h3>
+                <p>
+                    Automatically classify feedback as positive, neutral,
+                    or negative.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon orange">🔑</div>
+                <h3>Keyword Extraction</h3>
+                <p>
+                    Discover the most important words and topics mentioned
+                    by students.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <div class="about-label">ABOUT THE PROJECT</div>
+
+            <h2>
+                Turn Student Opinions
+                <span>Into Insights.</span>
+            </h2>
+
+            <p>
+                Student Feedback Text and Speech Analyzer is a web-based
+                application designed to help educational institutions
+                understand student opinions more efficiently.
+            </p>
+
+            <p>
+                The system accepts both written and spoken feedback,
+                analyzes the content, detects sentiment, and extracts
+                important keywords. This can help faculty and institutions
+                identify strengths and areas that need improvement.
+            </p>
+
+        </div>
+
+        <div class="about-stat-card">
+
+            <div class="stat-circle">
+                <span>AI</span>
+            </div>
+
+            <h3>Smart Feedback</h3>
+
+            <p>
+                Text + Speech + Sentiment + Keywords
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-logo">
+            <div class="logo-icon">SF</div>
+            <div>
+                <h3>Feedback<span>AI</span></h3>
+                <p>Student Feedback Analyzer</p>
+            </div>
+        </div>
+
+        <p>
+            © 2026 Student Feedback Analyzer. Built for smarter education.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
